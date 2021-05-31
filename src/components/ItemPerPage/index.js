@@ -13,10 +13,10 @@ const PerPageItem = ({onItemChange}) => {
     }
     return (
         <input
-            type="text"
+            type="number"
             className="form-control"
             style={{ width: "240px" }}
-            placeholder="Search"
+            placeholder="set number"
             value={itemPerPage}
             onChange={(e)=> onChanging(e.target.value)}
         />

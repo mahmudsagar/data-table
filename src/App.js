@@ -16,7 +16,7 @@ function App() {
 
     useEffect(() => {
         const getData = () => {
-            fetch("https://jsonplaceholder.typicode.com/comments")
+            fetch("https://jsonplaceholder.typicode.com/users")
                 .then((response) => response.json())
                 .then((json) => {
                     setComments(json);
@@ -28,7 +28,7 @@ function App() {
         { name: "No#", field: "id", sortable: false },
         { name: "Name", field: "name", sortable: true },
         { name: "Email", field: "email", sortable: true },
-        { name: "Comment", field: "body", sortable: false },
+        { name: "Website", field: "website", sortable: false },
     ];
 
     const commentsData = useMemo(() => {
@@ -47,7 +47,8 @@ function App() {
             computedComments = computedComments.filter(
                 (comment) =>
                     comment.name.toLowerCase().includes(search.toLowerCase()) ||
-                    comment.email.toLowerCase().includes(search.toLowerCase())
+                    comment.email.toLowerCase().includes(search.toLowerCase()) ||
+                    comment.website.toLowerCase().includes(search.toLowerCase())
             );
         }
         return computedComments.slice(
@@ -97,7 +98,7 @@ function App() {
                                     </th>
                                     <td>{comment.name}</td>
                                     <td>{comment.email}</td>
-                                    <td>{comment.body}</td>
+                                    <td>{comment.website}</td>
                                 </tr>
                             );
                         })}
