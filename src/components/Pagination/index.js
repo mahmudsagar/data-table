@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import './style.css'
+import "./style.css";
 
 const PaginationComponent = ({
     total = 0,
@@ -19,7 +19,12 @@ const PaginationComponent = ({
         for (let i = 1; i <= totalPages; i++) {
             pages.push(
                 <li
-                    className={`page-item ${localStorage.getItem("currentPage")? parseInt(localStorage.getItem("currentPage")) === i && "active" : currentPage === i && "active"}`}
+                    className={`page-item ${
+                        localStorage.getItem("currentPage") && localStorage.getItem("currentPage") !==" "
+                            ? parseInt(localStorage.getItem("currentPage")) ===
+                                  i && "active"
+                            : currentPage === i && "active"
+                    }`}
                     key={i}
                     onClick={() => onPageChange(i)}
                 >

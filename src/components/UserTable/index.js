@@ -91,7 +91,7 @@ const UserTable = () => {
                         onSearch={(value) => {
                             setSearch(value);
                             setCurrentPage(1);
-                            localStorage.setItem("currentPage", currentPage)
+                            localStorage.setItem("currentPage", currentPage.toString())
                         }}
                     />
                 </Col>
