@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Pagination } from "react-bootstrap";
+import './style.css'
 
 const PaginationComponent = ({
     total = 0,
@@ -18,30 +18,48 @@ const PaginationComponent = ({
         const pages = [];
         for (let i = 1; i <= totalPages; i++) {
             pages.push(
-                <Pagination.Item
+                <li
+                    className={`page-item ${localStorage.getItem("currentPage")? parseInt(localStorage.getItem("currentPage")) === i && "active" : currentPage === i && "active"}`}
                     key={i}
-                    active={i === currentPage}
                     onClick={() => onPageChange(i)}
                 >
                     {i}
-                </Pagination.Item>
+                </li>
             );
         }
         return pages;
     }, [totalPages, currentPage, onPageChange]);
 
-    if(totalPages === 0 ) return null
+    if (totalPages === 0) return null;
 
     return (
-        <Pagination>
-            <Pagination.Prev
-                onClick={() => onPageChange(currentPage === 1? currentPage = totalPages : currentPage - 1)}
-            />
+        <ul className="pagination">
+            <li
+                className="page-item disabled"
+                onClick={() =>
+                    onPageChange(
+                        currentPage === 1
+                            ? (currentPage = totalPages)
+                            : currentPage - 1
+                    )
+                }
+            >
+                Previous
+            </li>
             {pageinationItems}
-            <Pagination.Next  
-                onClick={()=>{onPageChange(currentPage===totalPages? currentPage = 1 : currentPage+1)}}
-            />
-        </Pagination>
+            <li
+                className="page-item"
+                onClick={() => {
+                    onPageChange(
+                        currentPage === totalPages
+                            ? (currentPage = 1)
+                            : currentPage + 1
+                    );
+                }}
+            >
+                Next
+            </li>
+        </ul>
     );
 };
 

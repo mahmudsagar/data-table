@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Search = ({onSearch}) => {
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState(localStorage.getItem("search")? localStorage.getItem("search") : '')
 
     const onInputChange=(value)=>{
+        localStorage.setItem("search", value)
         setSearch(value)
         onSearch(value)
     }
+    useEffect(()=>{
+        onSearch(localStorage.getItem("search"))    
+    }, [])
     return (
         <input
             type="text"

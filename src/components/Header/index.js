@@ -22,7 +22,6 @@ const Header = ({ headers, onSorting }) => {
                             sortable ? onSortingChange(field) : null
                         }
                     >
-                        {console.log(field)}
                         {name}
                         {sortingField && sortingField === field && (
                             sortingOrder === "asc" ? <BsArrowDown/> : <BsArrowUp />
