@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { BsArrowDown, BsArrowUp } from "react-icons/bs";
 const Header = ({ headers, onSorting }) => {
     const [sortingField, setSortingField] = useState("");
-    const [sortingOrder, setSortingOrder] = useState("asc");
+    const [sortingOrder, setSortingOrder] = useState(localStorage.getItem('order')? localStorage.getItem('order') : "asc");
 
     const onSortingChange = (field) => {
         const order =
             field === sortingField && sortingOrder === "asc" ? "desc" : "asc";
         setSortingField(field);
         setSortingOrder(order)
+        localStorage.setItem('order', order)
         onSorting(field, order)
     };
 
@@ -23,8 +24,8 @@ const Header = ({ headers, onSorting }) => {
                         }
                     >
                         {name}
-                        {sortingField && sortingField === field && (
-                            sortingOrder === "asc" ? <BsArrowDown/> : <BsArrowUp />
+                        {sortable && (
+                            localStorage.getItem('order') === "desc" ? <BsArrowUp /> : <BsArrowDown/>
                         )}
                     </th>
                 ))}

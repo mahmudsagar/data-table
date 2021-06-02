@@ -20,7 +20,7 @@ const PaginationComponent = ({
             pages.push(
                 <li
                     className={`page-item ${
-                        localStorage.getItem("currentPage") && localStorage.getItem("currentPage") !==" "
+                       localStorage.getItem("currentPage")
                             ? parseInt(localStorage.getItem("currentPage")) ===
                                   i && "active"
                             : currentPage === i && "active"
