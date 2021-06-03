@@ -6,6 +6,7 @@ import TableHeader from "../Header";
 import PerPageItem from "../ItemPerPage";
 import Search from "../Search";
 import { Link } from "react-router-dom";
+import SideNavigation from "../Navigation/SideNavigation";
 
 const UserTable = () => {
     const [comments, setComments] = useState([]);
@@ -88,6 +89,7 @@ const UserTable = () => {
     }, [comments, currentPage, itemPerPage, search, sorting]);
     return (
         <div>
+            <SideNavigation />
             <Container className="py-3">
                 <Row>
                     <Col md={6}>

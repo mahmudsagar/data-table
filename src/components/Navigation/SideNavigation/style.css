@@ -1,0 +1,12 @@
+.sidebar {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    background-color: #13795b;
+    position: fixed;
+    height: 100%;
+    overflow: hidden;
+    top: 54px;
+    z-index: 9999999;
+}

@@ -6,7 +6,6 @@ import UserInfo from "../UserInfo";
 const UserDashboard = () => {
     const [user, setUser] = useState({});
     const [userPost, setUserPost] = useState([])
-
     // @ts-ignore
     const { id } = useParams();
     const getUser = async () => {
